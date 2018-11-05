@@ -2,6 +2,12 @@
 [extern isr_handler]
 
 ; Common ISR code
+
+/*
+这段代码是我们常用的中断处理程序。它首先使用'pusha'命令来推送堆栈上的所有通用寄存器。它使用'popa'命令在最后恢复它们。它还获取当前数据段选择器并将其推送到堆栈，将所有段寄存器设置为内核数据选择器。
+
+当中断触发时，处理器会自动将有关处理器状态的信息压入堆栈。按下代码段，指令指针，标志寄存器，堆栈段和堆栈指针。 IRET指令专门用于从中断返回。它将这些值从堆栈中弹出并将处理器返回到原来的状态
+*/
 isr_common_stub:
     ; 1. Save CPU state
 	pusha ; Pushes edi,esi,ebp,esp,ebx,edx,ecx,eax
@@ -23,7 +29,7 @@ isr_common_stub:
 	mov fs, ax
 	mov gs, ax
 	popa
-	add esp, 8 ; Cleans up the pushed error code and pushed ISR number
+	add esp, 8 ; Cleans up the pushed error code and pushed ISR number  
 	sti
 	iret ; pops 5 things at once: CS, EIP, EFLAGS, SS, and ESP
 	
