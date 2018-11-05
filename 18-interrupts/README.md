@@ -22,9 +22,6 @@ From now on, our C header files will also have include guards.
 
 Interrupts
 ----------
-/*
-expectable and  unexpectable
-*/
 Interrupts are one of the main things that a kernel needs to 
 handle. We will implement it now, as soon as possible, to be able
 to receive keyboard input in future lessons.
@@ -133,7 +130,7 @@ to do it after some interrupts.
 
 中断：中断是执行过程中的强制转移，转移到相应的处理程序。比如说timer的action或者鼠标的插入，还有一些错误的处理。
 ISR:构建IDT,响应中断事件
-
+GDT->IDT->Gate->中断处理程序入口
 
 
 
