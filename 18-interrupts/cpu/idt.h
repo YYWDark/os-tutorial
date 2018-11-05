@@ -19,9 +19,8 @@ typedef struct {
      /*
       Bits 6-5 gate 的权限设置为 3 级：这样可以给用户代码有足够的权限去访问 gate
       gate 的权限设置为 0 级：只允许内核代码访问，用户无权通过这个 gate 去访问 interrupt handler
-      Bits 3-0 来标明该descriptor的类型，还有常见1111==32-bit trap gate，
+      Bits 3-0 来标明该descriptor的类型，除了中断门之外还有常见陷阱门和任务门
       0101 = task gate
-      
       OX8E = 1000 1110
      */
     u8 flags; 

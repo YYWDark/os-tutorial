@@ -131,6 +131,8 @@ to do it after some interrupts.
 
 
 
+中断：中断是执行过程中的强制转移，转移到相应的处理程序。比如说timer的action或者鼠标的插入，还有一些错误的处理。
+ISR:构建IDT,响应中断事件
 
 
 
